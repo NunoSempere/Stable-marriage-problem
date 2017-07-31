@@ -1,0 +1,178 @@
+def esta_a_antes_en_una_lista(a,b,lista):
+    lll=len(lista)
+    xx=0
+    while lista[xx]!=a and lista[xx]!=b:
+        xx=xx+1
+    if lista[xx]==a:
+        return True
+    return False
+
+###
+
+def funcion_emparejamiento(H,M):
+    
+    #print H
+    #print M
+    
+    # Nota bene: Queremos que nuestras listas comiencen en 0, porque L[0] produce el primer elemento de la lista L
+    
+    if len(H)!=len(M):
+        return "Caso patológico" #realmente también tendría que comprobar algunas cosas más, pero soy un vago 
+    
+    l= len(H) #=len(M)
+    
+    Hombres_emparejados = [False for _ in xsrange(l)]
+    Emparejamientos= dict([(_,None) for _ in xrange(l)]) # Donde x designa la mujer
+    
+    while False in Hombres_emparejados:
+        
+        t=0
+        
+        while Hombres_emparejados[t]!=False:
+            t=t+1
+        
+        #print 't=', t
+        
+        mm=H[t][0] # La primera mujer en la lista de preferencias del hombre H[t], el cual no está emparejado.
+        
+        #print 'mm=',mm
+
+        hh = Emparejamientos[mm] # La pareja actual de mm. Puede ser 'None'
+        
+        #print 'hh=',hh
+        
+        if ((hh == None) or esta_a_antes_en_una_lista(t,hh,M[mm]) ):
+            
+            # Nótese que hh puede ser None, y por tanto no estar en la lista M[mm], pero si ese es el caso, no se pasa a comprobar el or.
+            
+            Emparejamientos[mm]=t
+            Hombres_emparejados[t]=True
+            if hh != None:
+                Hombres_emparejados[hh] = False
+        
+        # Independientemente de lo que pase, quitamos a la mujer mm de la lista de preferencias de H[t]
+        ll= len(H[t])
+        H[t] = H[t][1:ll]
+        
+        #print H[t]
+    
+    return Emparejamientos
+
+###
+
+def Media_M(Pareja, M):
+    l=len(M)
+    s=0
+    #print Pareja
+    #print M
+    for x in xsrange(l):
+        
+        #print x,Pareja[x]
+
+        t=0
+        while Pareja[x]!=M[x][t]:
+            t=t+1
+        s=s+t
+    return (s/l).n()
+
+###
+
+def Media_H(Pareja, H):
+    l=len(H)
+    s=0
+    #print Pareja
+    #print M
+    for x in xsrange(l):
+        
+        #print x,Pareja[x]
+
+        t=0
+        while x!=H[Pareja[x]][t]:
+            t=t+1
+        #print t
+        s=s+t
+    return (s/l).n()
+
+###
+
+def Simulacion(numero_de_tiradas, n):
+    x=1
+    
+    F=dict()
+    D=dict()
+    
+    while x <= numero_de_tiradas:
+        
+        Permu=Permutations([0..n-1])
+
+        H=[Permu.random_element() for _ in xsrange(n)]
+        HH=copy(H)
+        
+        M=[Permu.random_element() for _ in xsrange(n)]
+        MM=copy(M)
+        
+        MH=funcion_emparejamiento(H, M)
+        
+        w= Media_M(MH, MM)
+        if w in F:
+            F[w]=F[w] +1
+        
+        if w not in F:
+            F[w]=1
+        
+        q= Media_H(MH, HH)
+        
+        if q in D:
+            D[q]=D[q] +1
+        
+        if q not in D:
+            D[q]=1           
+                
+        x=x+1
+    
+    L=points(F.items())
+    M=points(D.items(), color='red')
+
+    return L + M
+
+###
+
+def Simulacion_floor(numero_de_tiradas, n, granularidad):
+    x=1
+    
+    F=dict()
+    D=dict()
+    
+    while x <= numero_de_tiradas:
+        
+        Permu=Permutations([0..n-1])
+
+        H=[Permu.random_element() for _ in xsrange(n)]
+        HH=copy(H)
+        
+        M=[Permu.random_element() for _ in xsrange(n)]
+        MM=copy(M)
+        
+        MH=funcion_emparejamiento(H, M)
+        
+        w= floor(Media_M(MH, MM))
+        if w in F:
+            F[w]=F[w] +1
+        
+        if w not in F:
+            F[w]=1
+        
+        q= floor(Media_H(MH, HH)*granularidad)/granularidad # Si granularidad es 5, divide el gráfico en intervalos de longitud 0.2 =1/5
+        
+        if q in D:
+            D[q]=D[q] +1
+        
+        if q not in D:
+            D[q]=1           
+                
+        x=x+1
+    
+    L=points(F.items())
+    M=points(D.items(), color='red')
+
+    return L + M
