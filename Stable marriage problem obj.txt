@@ -1,0 +1,157 @@
+# Problema de las parejas estables, de tal forma que las listas no son aleatorias, sino que hay "objetividad". Modelamos esto como que la lista de cada uno es n variaciones (cambiar un elemento por uno juxtapuesto) de la lista [1,2,3,4,5,...,m]
+# Nótese que si n es par, la variación puede ser el original.
+
+###
+
+def Variar_una_vez_una_lista(L):
+    l=len(L)-2 # Vamos a intercambiar el elemento j por el j+1, donde j pertenece a [0,...,l-2], pues no podemos intercambiar el último elemento de la lista por nada
+    t=randint(0,l)
+    L[t],L[t+1]= L[t+1],L[t]
+    return L
+
+###
+
+def Variar_n_veces_una_lista(L,n):
+    for q in [1..n]:
+        L= Variar_una_vez_una_lista(L)
+    return L
+
+###
+
+def producir_lista(n_elementos,n_variaciones):
+    L=[0..n_elementos-1]
+    L=Variar_n_veces_una_lista(L,n_variaciones)
+    return L
+
+###
+
+def Simulacion_floor_objetiva(numero_de_tiradas, n, granularidad):
+    x=1
+    
+    F=dict()
+    D=dict()
+    
+    while x <= numero_de_tiradas:
+        
+        Permu=Permutations([0..n-1])
+
+        H=[producir_lista(n,v) for w in xsrange(n)]
+        HH=copy(H)
+        
+        M=[producir_lista(n,v) for w in xsrange(n)]
+        MM=copy(M)
+        
+        MH=funcion_emparejamiento(H, M)
+        
+        w= floor(Media_M(MH, MM))
+        if w in F:
+            F[w]=F[w] +1
+        
+        if w not in F:
+            F[w]=1
+        
+        q= floor(Media_H(MH, HH)*granularidad)/granularidad # Si granularidad es 5, divide el gráfico en intervalos de longitud 0.2
+        
+        if q in D:
+            D[q]=D[q] +1
+        
+        if q not in D:
+            D[q]=1           
+                
+        x=x+1
+    
+    L=points(F.items())
+    M=points(D.items(), color='red')
+
+    return L + M
+
+###
+
+def Simulacion_objetiva(numero_de_tiradas, n,v):
+    # v es el número de variaciones en porcentaje. Aquí la convertimos en número
+    v= floor(n*v/100)
+    x=1
+    
+    F=dict()
+    D=dict()
+    
+    while x <= numero_de_tiradas:
+        
+        Permu=Permutations([0..n-1])
+
+        H=[producir_lista(n,v) for w in xsrange(n)]
+        HH=copy(H)
+        
+        M=[producir_lista(n,v) for w in xsrange(n)]
+        MM=copy(M)
+        
+        MH=funcion_emparejamiento(H, M)
+        
+        w= Media_M(MH, MM)
+        if w in F:
+            F[w]=F[w] +1
+        
+        if w not in F:
+            F[w]=1
+        
+        q= Media_H(MH, HH)
+        
+        if q in D:
+            D[q]=D[q] +1
+        
+        if q not in D:
+            D[q]=1           
+                
+        x=x+1
+    
+    L=points(F.items())
+    M=points(D.items(), color='red')
+
+###
+
+def Media_objetiva(numero_de_tiradas, n,v):
+    # v es el número de variaciones en porcentaje. Aquí la convertimos en número
+    v= floor(n*v/100)
+    x=1
+    
+    F=dict()
+    D=dict()
+    
+    media_h=0
+    media_m=0
+    
+    while x <= numero_de_tiradas:
+        
+        Permu=Permutations([0..n-1])
+
+        H=[producir_lista(n,v) for w in xsrange(n)]
+        HH=copy(H)
+        
+        M=[producir_lista(n,v) for w in xsrange(n)]
+        MM=copy(M)
+        
+        MH=funcion_emparejamiento(H, M)
+        
+        media_h= media_h + Media_H(MH, HH)
+        
+        media_m=  media_m + Media_M(MH, MM)
+        x=x+1
+
+        
+    media_h = (media_h / numero_de_tiradas).n(16)
+    media_m = (media_m / numero_de_tiradas).n(16)
+    
+    return (media_h ,media_m )
+
+###
+
+n=50 # Población 
+f(x)=x
+P=points([(5,5)], color = 'black') # Punto de referencia en el gráfico 
+
+L=[x for x in xsrange(1001) if x%20==0] # Creo las listas
+
+for y in L: # Se crea un gráfico.
+    t=Media_objetiva(100, 20,y)
+    P=P+points([t], color=(1-y/(20*n),0,y/(20*n)))
+    print y,t
