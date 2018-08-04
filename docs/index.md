@@ -101,17 +101,19 @@ a) Preferencias elegidas aleatoriamente.
 Para experimento con 20 personas de cada sexo, repetido 100 veces, obtenemos la siguiente gráfica✝:
 
 
-
+![](20_aleatorio/100.png)
 
 
 Hay un patron, que se va discerniendo a medida que aumentamos el número de repeticiones.
 
 Para 10^3 repeticiones:
 
+![](20_aleatorio/1000.png)
 
 
 Para 10^4 repeticiones:
 
+![](20_aleatorio/10000.png)
 
 
 
@@ -120,7 +122,7 @@ Para 10^4 repeticiones:
 
 Y para 2*10^4 repeticiones:
 
-
+![](20_aleatorio/20000.png)
 
 Para una población de 100 de cada sexo, obtenemos resultados similares.
 
@@ -129,27 +131,27 @@ Para una población de 100 de cada sexo, obtenemos resultados similares.
 Para 1000 repeticiones:
 
 
-
+![](100_aleatorio/1000.png)
 
 
 Y con una granularidad de 0.05 y 2000 repeticiones:
 
-
-
+![](Simulacion_floor(2000, 100,20).png)
 
 
 Y con una granularidad de 0,05 y 3000 repeticiones:
 
+![](Simulacion_floor(3000, 100,20).png)
 
 
 
 
 
 
-Para conseguir resultados "bonitos" podemos o bien reducir el número de personas o bien aumentar el número de experimentos. Si hacemos ambas cosas, con 10 sujetos de cada sexo y 10^4 experimentos, obtenemos lo siguiente:
+Para conseguir resultados "bonitos" podemos o bien reducir el número de personas o bien aumentar el número de experimentos. Si hacemos ambas cosas, con 10 sujetos de cada sexo y 2*10^4 experimentos, obtenemos lo siguiente:
 
 
-
+![](Simulacion(200000,10).png)
 
 
 
@@ -160,7 +162,7 @@ b) Preferencias elegidas no aleatoriamente.
 
 
 
-Modelamos el asunto de la siguiente manera: Hay una preferencia platónica [H1, H2 , H3, H4, H5,...], es decir, el hombre n es más deseable que el n+1, y lo mismo con las mujeres. Sobre esta lista platónica, los sujetos tienen un número variable de variaciones, donde una variación es intercambiar la persona n con la n+1. Daré la magnitud de la variación el % sobre la población, es decir, si hay n personas de cada sexo, v% variación se corresponde con floor(n*v/100) variaciones, donde floor(x) es el redondeo hacia abajo de x.
+Modelamos el asunto de la siguiente manera: Hay una preferencia platónica [H1, H2 , H3, H4, H5,...], es decir, el hombre n es más deseable que el n+1, y lo mismo con las mujeres. Sobre esta lista platónica, los sujetos tienen un número variable de variaciones, donde una variación es intercambiar la persona n con la n+1. Daré la magnitud de la variación el % sobre la población, es decir, si hay n personas de cada sexo, v% variación se corresponde con floor(n.v/100) variaciones, donde floor(x) es el redondeo hacia abajo de x.
 
 
 
@@ -172,6 +174,7 @@ Para un 10% de variación y 2000 repeticiones:
 
 Para una población de 20 de cada sexo, obtenemos:
 
+![](20_obj/Simulacion_objetiva(1000, 20,10).png)
 
 
 
@@ -180,7 +183,7 @@ Para una población de 20 de cada sexo, obtenemos:
 
 Y para una población de 100:
 
-
+![](100_obj/Simulacion_objetiva(1000, 20,10).png)
 
 
 
@@ -190,7 +193,7 @@ El punto (a,b) representa dos medias de un experimento repetido 100 veces, donde
 El color representa la variación; cuanto más azul, más variación.  La variación va de 0% a 1000%, en intervalos de 20%. 
 
 
-
+![](Media_obj/sage1)
 
 
 
@@ -200,7 +203,7 @@ Nótese que los ejes no están centrados. La línea azul es y=x, por lo que mayo
 
 
 
-
+![](Media_obj/sage2)
 
 
 
@@ -211,7 +214,7 @@ El punto negro flotando por encima de la recta es la media de una población ale
 Moraleja
 
 
-
+![](Moraleja.png)
 
 
 La moraleja, no obstante, depende de en qué medida nuestras asunciones se cumplan en la realidad, y estas no son robustas. Es, entonces, una cuestión de criterio personal si una validez parcial de los principios implica una validez parcial de las conclusiones.
