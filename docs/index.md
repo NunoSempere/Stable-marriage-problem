@@ -1,4 +1,4 @@
-Planteamiento. Explicación cultivada en Wikipedia.
+## Planteamiento. Explicación cultivada en Wikipedia.
 
 
 
@@ -86,7 +86,7 @@ Dicho lo cual, Wikipedia menciona que el algoritmo descrito resulta óptimo para
 
 
 
-Resultados: 
+## Resultados: 
 
 
 
@@ -211,7 +211,7 @@ El punto negro flotando por encima de la recta es la media de una población ale
 
 
 
-Moraleja
+## Moraleja
 
 
 ![](Moraleja.png)
