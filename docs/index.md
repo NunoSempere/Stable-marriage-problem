@@ -227,8 +227,7 @@ Dejo como ejercicio al lector y como preguntas a mí mismo:
 N.B.: Parece que esto ya ha sido estudiado, véase Improving Man-Optimal Stable Matchings by Minimum Changeof Preference Lists, Takao Inoshita et al, extraído de:
 https://pdfs.semanticscholar.org/461c/aa254679c8834ac90cf12ea4cec625c3b16d.pdf
 Demuéstrese que las campanas de Gauss se van separando a medida que n aumenta. ¿A qué es proporcional esa separación?
+
 ✝ El lector perspicaz se habrá dado cuenta de que en las gráficas hay puntos en el intervalo [0,1]. Esto se debe a que, en Python, la primera posición de una lista es la posición cero. No se preocupen; réstenle 1 a los números utilizados en el ejemplo.
-
-
 
 ✝✝ Realmente (n-1)/2, porque el más deseado es el 0, no el 1. Pero da igual. Aunque ahora que lo pienso, tal vez tenga un error por uno (off by one error) en algún sitio.
