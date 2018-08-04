@@ -2,7 +2,7 @@
 
 
 
-Podemos modelizar el problema poblacional de encontrar una pareja aceptando las asunciones de El problema de las parejas estables (Stable Marriage Problem). Estas son: que la población se divide en hombres y mujeres, y que todo hombre y toda mujer prefieren a los individuos del sexo opuesto en un orden concreto.
+Podemos modelizar el problema poblacional de encontrar una pareja aceptando las asunciones de El problema de las parejas estables ([Stable Marriage Problem](https://en.wikipedia.org/wiki/Stable_marriage_problem)). Estas son: que la población se divide en hombres y mujeres, y que todo hombre y toda mujer prefieren a los individuos del sexo opuesto en un orden concreto.
 
 
 
@@ -26,9 +26,7 @@ b) Cada mujer dice "tal vez" al nuevo pretendiente que más prefiere, si y solo 
 
 
 
-Esto se repite hasta que todos quedan emparejados. Además, cuando el proceso se termine no existirá ninguna pareja {A,B} tal que A y B preferirían al otro sobre su pareja actual y no estén ya juntos. Esto pasa por razones fáciles de entender y que están fácilmente disponibles en Wikipedia
-
-{https://en.wikipedia.org/wiki/Stable_marriage_problem}
+Esto se repite hasta que todos quedan emparejados. Además, cuando el proceso se termine no existirá ninguna pareja {A,B} tal que A y B preferirían al otro sobre su pareja actual y no estén ya juntos. Esto pasa por razones fáciles de entender y que están fácilmente disponibles en [Wikipedia](https://en.wikipedia.org/wiki/Stable_marriage_problem)
 
 
 
@@ -82,7 +80,7 @@ Fin del ejemplo
 
 
 
-Dicho lo cual, Wikipedia menciona que el algoritmo descrito resulta óptimo para los pretendientes. Me interesa cuantificar esa afirmación anto para preferencias aleatorias y no aleatorias. Para ello, he escrito varios programas en Python, que se pueden acceder aquí: {https://github.com/NunoSempere/Stable-marriage-problem}. Incidentalmente, estimo que la complejidad del asunto es similar a la la chicha de este proyecto de fin de carrera: {Algoritmo de Gale-Shapley. Variaciones y alternativas; Documento archivado}, que trata de algo similar.
+Dicho lo cual, Wikipedia menciona que el algoritmo descrito resulta óptimo para los pretendientes. Me interesa cuantificar esa afirmación anto para preferencias aleatorias y no aleatorias. Para ello, he escrito varios programas en Python, que se pueden acceder [aquí](https://github.com/NunoSempere/Stable-marriage-problem). Incidentalmente, estimo que la complejidad del asunto es similar a la la chicha de este proyecto de fin de carrera: [Algoritmo de Gale-Shapley. Variaciones y alternativas; Documento archivado](https://addi.ehu.es/bitstream/handle/10810/14861/09-2014%20JP%20Minguez%20TFG%20Memoria.pdf), que trata de algo similar.
 
 
 
